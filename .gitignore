@@ -1,0 +1,5 @@
+# bazel build files
+bazel-bin
+bazel-learn-mlir
+bazel-out
+bazel-testlogs
