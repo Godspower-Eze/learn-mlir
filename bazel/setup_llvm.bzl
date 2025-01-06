@@ -8,6 +8,12 @@ _LLVM_TARGETS = [
     # Needed for Apple M1 targets, see
     # https://github.com/j2kun/mlir-tutorial/issues/11
     "AArch64",
+    # The bazel dependency graph for mlir-opt fails to load (at the analysis
+    # step) without the NVPTX target in this list, because mlir/test:TestGPU
+    # depends on the //llvm:NVPTXCodeGen target, which is not defined unless this
+    # is included. @j2kun asked the LLVM maintiners for tips on how to fix this,
+    # see https://github.com/llvm/llvm-project/issues/63135
+    "NVPTX",
 ]
 
 def setup_llvm(name):
